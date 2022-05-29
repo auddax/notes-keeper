@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar from '@mui/material/AppBar';
+import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -19,29 +19,15 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
-const drawerWidth = 240;
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
+const Header = styled(AppBar)`
+  z-index: 1201;
+  background: #fff;
+  height: 70px;
+`
 
 const HeaderBar = ({ open, handleDrawer }) => {
   return (
-    <AppBar position="fixed" open={ open }>
+    <Header position="fixed" open={ open }>
     <Toolbar>
       <IconButton
         color="inherit"
@@ -59,7 +45,7 @@ const HeaderBar = ({ open, handleDrawer }) => {
         Mini variant drawer
       </Typography>
     </Toolbar>
-  </AppBar>
+  </Header>
   );
 };
 
