@@ -32,7 +32,7 @@ const HeaderBar = ({ open, handleDrawer }) => {
       >
       <Menu />
       </IconButton>
-      <Logo icon={faNoteSticky} />
+      <Logo icon={ faNoteSticky } />
       <Heading>Notes Keeper</Heading>
     </Toolbar>
   </Header>

@@ -1,10 +1,6 @@
 import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MuiDrawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { styled } from '@mui/material/styles';
+import { Box, Drawer as MuiDrawer } from '@mui/material';
 
 // Components
 import HeaderBar from './HeaderBar';
@@ -56,7 +52,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const SwipeDrawer = () => {
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawer = () => {
@@ -70,11 +65,7 @@ const SwipeDrawer = () => {
         handleDrawer = { handleDrawer }
       />
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={ handleDrawer }>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </DrawerHeader>
+        <DrawerHeader></DrawerHeader>
         <NavList 
           open = { open }
         />
