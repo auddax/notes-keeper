@@ -33,7 +33,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     width: drawerWidth,
@@ -51,23 +50,23 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const SwipeDrawer = () => {
+function SwipeDrawer() {
   const [open, setOpen] = React.useState(false);
 
   const handleDrawer = () => {
-    setOpen(prevState => !prevState);
+    setOpen((prevState) => !prevState);
   };
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <HeaderBar 
-        open = { open }
-        handleDrawer = { handleDrawer }
+      <HeaderBar
+        open={open}
+        handleDrawer={handleDrawer}
       />
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader></DrawerHeader>
-        <NavList 
-          open = { open }
+        <DrawerHeader />
+        <NavList
+          open={open}
         />
       </Drawer>
     </Box>

@@ -5,26 +5,25 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { LightbulbOutlined as Bulb, ArchiveOutlined as Archive, DeleteOutlineOutlined as Delete } from '@mui/icons-material';
 
-const NavList = ({ open }) => {
-
+function NavList() {
   const navList = [
-    { id: 1, name: 'Notes', icon: <Bulb />},
+    { id: 1, name: 'Notes', icon: <Bulb /> },
     { id: 2, name: 'Archive', icon: <Archive /> },
-    { id: 3, name: 'Trash', icon: <Delete /> }
+    { id: 3, name: 'Trash', icon: <Delete /> },
   ];
 
   return (
     <List>
-      {navList.map(list => (
+      {navList.map((list) => (
         <ListItem button key={list.id}>
-            <ListItemIcon>
-              {list.icon}
-            </ListItemIcon>
-            <ListItemText primary={list.name} />
+          <ListItemIcon>
+            {list.icon}
+          </ListItemIcon>
+          <ListItemText primary={list.name} />
         </ListItem>
       ))}
     </List>
   );
-};
+}
 
 export default NavList;
