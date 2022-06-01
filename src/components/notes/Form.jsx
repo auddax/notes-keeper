@@ -9,7 +9,8 @@ import { DataContext } from '../../context/DataProvider';
 const Container = styled(Box)`
   display: flex;
   flex-direction: column;
-  width: 600px;
+  width: 45vw;
+  max-width: 600px;
   box-shadow: 0 1px 2px 0 rgb(60 64 67/ 30%), 0 2px 6px 2px rgb(60 64 67/ 15%);
   padding: 10px 15px;
   border-radius: 8px;
