@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { styled } from '@mui/material/styles';
-import { Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 
 // Components
 import Form from './Form';
@@ -13,16 +13,21 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 function Notes() {
   const { notes } = useContext(DataContext);
+
   return (
-    <Box sx={{ display: 'flex' }}>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+    <Box sx={{ display: 'flex', width: '100%' }}>
+      <Box sx={{ p: 3, width: '100%' }}>
         <DrawerHeader />
         <Form />
-        {
-          notes.map((note) => (
-            <Note note={note} />
-          ))
-        }
+        <Grid container style={{ marginTop: 16 }}>
+          {
+            notes.map((note) => (
+              <Grid item>
+                <Note note={note} />
+              </Grid>
+            ))
+          }
+        </Grid>
         <Note />
       </Box>
     </Box>

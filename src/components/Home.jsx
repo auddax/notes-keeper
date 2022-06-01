@@ -7,9 +7,9 @@ import Notes from './notes/Notes';
 
 function Home() {
   return (
-    <Box>
+    <Box style={{ display: 'flex', width: '100%' }}>
       <SwipeDrawer />
-      <Notes style={{ display: 'flex', width: '100%' }} />
+      <Notes />
     </Box>
   );
 }

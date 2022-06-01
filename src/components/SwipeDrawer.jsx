@@ -63,7 +63,13 @@ function SwipeDrawer() {
         open={open}
         handleDrawer={handleDrawer}
       />
-      <Drawer variant="permanent" open={open}>
+      <Drawer
+        sx={{
+          '& .MuiDrawer-paper': { borderWidth: 0 },
+        }}
+        variant="permanent"
+        open={open}
+      >
         <DrawerHeader />
         <NavList
           open={open}

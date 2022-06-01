@@ -3,7 +3,7 @@ import React, { createContext, useState } from 'react';
 export const DataContext = createContext(null);
 
 // eslint-disable-next-line react/prop-types
-function DataProvider({ children }) {
+export function DataProvider({ children }) {
   const [notes, setNotes] = useState([]);
   const [archiveNotes, setArchiveNotes] = useState([]);
   const [deletedNotes, setDeletedNotes] = useState([]);
@@ -23,5 +23,3 @@ function DataProvider({ children }) {
     </DataContext.Provider>
   );
 }
-
-export default DataProvider;
