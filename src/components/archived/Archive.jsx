@@ -18,7 +18,7 @@ const StyledCard = styled(Card)`
   border-radius: 8px;
 `;
 
-function Note({ note }) {
+function Archive({ archive }) {
   const {
     notes, setNotes, setArchiveNotes, setDeletedNotes,
   } = useContext(DataContext);
@@ -70,4 +70,4 @@ Note.defaultProps = {
   }),
 };
 
-export default Note;
+export default Archive;

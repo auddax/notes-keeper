@@ -15,7 +15,13 @@ function NavList() {
   return (
     <List>
       {navList.map((list) => (
-        <ListItem button key={list.id}>
+        <ListItem
+          sx={{
+            borderRadius: '0 50px 50px 0',
+          }}
+          button
+          key={list.id}
+        >
           <ListItemIcon>
             {list.icon}
           </ListItemIcon>
