@@ -18,7 +18,7 @@ const Header = styled(AppBar)`
 
 const Logo = styled(FontAwesomeIcon)`
   font-size: 2rem;
-  margin: 0 0.9rem 0 0;
+  margin: 0 16px 0 0px;
 `;
 
 const Heading = styled(Typography)`
@@ -33,7 +33,7 @@ function HeaderBar({ open, handleDrawer }) {
         <IconButton
           onClick={handleDrawer}
           edge="start"
-          sx={{ marginRight: '20px' }}
+          sx={{ marginRight: '24px' }}
         >
           <Menu />
         </IconButton>

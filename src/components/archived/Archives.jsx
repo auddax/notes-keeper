@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import { Box, Grid } from '@mui/material';
 
 // Components
-import { Archive } from './Archive';
+import Archive from './Archive';
 import { DataContext } from '../../context/DataProvider';
 
 const DrawerHeader = styled('div')(({ theme }) => ({

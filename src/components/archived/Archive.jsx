@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import {
   Card, CardActions, CardContent, Typography,
 } from '@mui/material';
-import { ArchiveOutlined as ArchiveIcon, DeleteOutlineOutlined as DeleteIcon } from '@mui/icons-material';
+import { UnarchiveOutlined as UnarchiveIcon, DeleteOutlineOutlined as DeleteIcon } from '@mui/icons-material';
 
 // Components
 import { DataContext } from '../../context/DataProvider';
@@ -17,7 +17,7 @@ const StyledCard = styled(Card)`
   border-radius: 8px;
 `;
 
-function Archive({ archive }) {
+function Archive({ note }) {
   const {
     notes, setNotes, setArchiveNotes, setDeletedNotes,
   } = useContext(DataContext);
@@ -37,11 +37,11 @@ function Archive({ archive }) {
   return (
     <StyledCard>
       <CardContent>
-        <Typography>{archive.heading}</Typography>
-        <Typography>{archive.text}</Typography>
+        <Typography>{note.heading}</Typography>
+        <Typography>{note.text}</Typography>
       </CardContent>
       <CardActions>
-        <ArchiveIcon
+        <UnarchiveIcon
           fontSize="small"
           style={{ marginLeft: 'auto' }}
           onClick={() => archiveNote(note)}
