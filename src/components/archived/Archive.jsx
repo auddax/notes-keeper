@@ -19,19 +19,19 @@ const StyledCard = styled(Card)`
 
 function Archive({ note }) {
   const {
-    notes, setNotes, setArchiveNotes, setDeletedNotes,
+    setNotes, archiveNotes, setArchiveNotes, setDeletedNotes,
   } = useContext(DataContext);
 
-  const archiveNote = (currrentNote) => {
-    const updatedNotes = notes.filter((data) => data.id !== currrentNote.id);
-    setNotes(updatedNotes);
-    setArchiveNotes((prevArr) => [currrentNote, ...prevArr]);
+  const UnarchiveNote = (currentNote) => {
+    const updatedNotes = archiveNotes.filter((data) => data.id !== currentNote.id);
+    setArchiveNotes(updatedNotes);
+    setNotes((prevArr) => [currentNote, ...prevArr]);
   };
 
-  const deleteNote = (currrentNote) => {
-    const updatedNotes = notes.filter((data) => data.id !== currrentNote.id);
-    setNotes(updatedNotes);
-    setDeletedNotes((prevArr) => [currrentNote, ...prevArr]);
+  const deleteNote = (currentNote) => {
+    const updatedNotes = archiveNotes.filter((data) => data.id !== currentNote.id);
+    setArchiveNotes(updatedNotes);
+    setDeletedNotes((prevArr) => [currentNote, ...prevArr]);
   };
 
   return (
@@ -43,11 +43,12 @@ function Archive({ note }) {
       <CardActions>
         <UnarchiveIcon
           fontSize="small"
-          style={{ marginLeft: 'auto' }}
-          onClick={() => archiveNote(note)}
+          style={{ marginLeft: 'auto', cursor: 'pointer' }}
+          onClick={() => UnarchiveNote(note)}
         />
         <DeleteIcon
           fontSize="small"
+          style={{ cursor: 'pointer' }}
           onClick={() => deleteNote(note)}
         />
       </CardActions>

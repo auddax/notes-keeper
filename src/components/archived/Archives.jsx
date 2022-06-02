@@ -21,7 +21,7 @@ function Archives() {
           {
             archiveNotes.map((archive) => (
               <Grid item>
-                <Archive archive={archive} />
+                <Archive note={archive} />
               </Grid>
             ))
           }

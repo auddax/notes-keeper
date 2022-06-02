@@ -4,7 +4,10 @@ import { styled } from '@mui/material/styles';
 import {
   Card, CardActions, CardContent, Typography,
 } from '@mui/material';
-import { ArchiveOutlined as Archive, DeleteOutlineOutlined as Delete } from '@mui/icons-material';
+import {
+  RestoreFromTrashOutlined as RestoreIcon,
+  DeleteForeverOutlined as DeleteIcon,
+} from '@mui/icons-material';
 
 // Components
 import { DataContext } from '../../context/DataProvider';
@@ -19,19 +22,18 @@ const StyledCard = styled(Card)`
 
 function DeleteNote({ note }) {
   const {
-    notes, setNotes, setArchiveNotes, setDeletedNotes,
+    notes, deletedNotes, setNotes, setDeletedNotes,
   } = useContext(DataContext);
 
-  const archiveNote = (currrentNote) => {
-    const updatedNotes = notes.filter((data) => data.id !== currrentNote.id);
-    setNotes(updatedNotes);
-    setArchiveNotes((prevArr) => [currrentNote, ...prevArr]);
+  const restoreNote = (currrentNote) => {
+    const updatedNotes = deletedNotes.filter((data) => data.id !== currrentNote.id);
+    setDeletedNotes(updatedNotes);
+    setNotes((prevArr) => [currrentNote, ...prevArr]);
   };
 
   const deleteNote = (currrentNote) => {
     const updatedNotes = notes.filter((data) => data.id !== currrentNote.id);
-    setNotes(updatedNotes);
-    setDeletedNotes((prevArr) => [currrentNote, ...prevArr]);
+    setDeletedNotes(updatedNotes);
   };
 
   return (
@@ -41,14 +43,15 @@ function DeleteNote({ note }) {
         <Typography>{note.text}</Typography>
       </CardContent>
       <CardActions>
-        <Archive
+        <DeleteIcon
           fontSize="small"
-          style={{ marginLeft: 'auto' }}
-          onClick={() => archiveNote(note)}
-        />
-        <Delete
-          fontSize="small"
+          style={{ marginLeft: 'auto', cursor: 'pointer' }}
           onClick={() => deleteNote(note)}
+        />
+        <RestoreIcon
+          fontSize="small"
+          style={{ cursor: 'pointer' }}
+          onClick={() => restoreNote(note)}
         />
       </CardActions>
     </StyledCard>

@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import {
   Card, CardActions, CardContent, Typography,
@@ -37,37 +36,24 @@ function Note({ note }) {
 
   return (
     <StyledCard>
-      <CardContent>
+      <CardContent style={{ maxHeight: 400, overflow: 'auto' }}>
         <Typography>{note.heading}</Typography>
         <Typography>{note.text}</Typography>
       </CardContent>
       <CardActions>
         <Archive
           fontSize="small"
-          style={{ marginLeft: 'auto' }}
+          style={{ marginLeft: 'auto', cursor: 'pointer' }}
           onClick={() => archiveNote(note)}
         />
         <Delete
           fontSize="small"
+          style={{ cursor: 'pointer' }}
           onClick={() => deleteNote(note)}
         />
       </CardActions>
     </StyledCard>
   );
 }
-
-Note.propTypes = {
-  note: PropTypes.shape({
-    heading: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  }),
-};
-
-Note.defaultProps = {
-  note: PropTypes.shape({
-    heading: '',
-    text: '',
-  }),
-};
 
 export default Note;

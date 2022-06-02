@@ -6,6 +6,7 @@ import {
   AppBar, Toolbar, Typography, IconButton,
 } from '@mui/material';
 import { Menu } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 const Header = styled(AppBar)`
   z-index: 1201;
@@ -29,17 +30,19 @@ const Heading = styled(Typography)`
 function HeaderBar({ open, handleDrawer }) {
   return (
     <Header open={open}>
-      <Toolbar>
-        <IconButton
-          onClick={handleDrawer}
-          edge="start"
-          sx={{ marginRight: '24px' }}
-        >
-          <Menu />
-        </IconButton>
-        <Logo icon={faNoteSticky} />
-        <Heading>Notes Keeper</Heading>
-      </Toolbar>
+      <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Toolbar>
+          <IconButton
+            onClick={handleDrawer}
+            edge="start"
+            sx={{ marginRight: '24px' }}
+          >
+            <Menu />
+          </IconButton>
+          <Logo icon={faNoteSticky} />
+          <Heading>Notes Keeper</Heading>
+        </Toolbar>
+      </Link>
     </Header>
   );
 }
