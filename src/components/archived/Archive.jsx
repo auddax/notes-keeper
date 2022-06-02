@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import {
   Card, CardActions, CardContent, Typography,
 } from '@mui/material';
-import { ArchiveOutlined as Archive, DeleteOutlineOutlined as Delete } from '@mui/icons-material';
+import { ArchiveOutlined as ArchiveIcon, DeleteOutlineOutlined as DeleteIcon } from '@mui/icons-material';
 
 // Components
 import { DataContext } from '../../context/DataProvider';
@@ -38,16 +37,16 @@ function Archive({ archive }) {
   return (
     <StyledCard>
       <CardContent>
-        <Typography>{note.heading}</Typography>
-        <Typography>{note.text}</Typography>
+        <Typography>{archive.heading}</Typography>
+        <Typography>{archive.text}</Typography>
       </CardContent>
       <CardActions>
-        <Archive
+        <ArchiveIcon
           fontSize="small"
           style={{ marginLeft: 'auto' }}
           onClick={() => archiveNote(note)}
         />
-        <Delete
+        <DeleteIcon
           fontSize="small"
           onClick={() => deleteNote(note)}
         />
@@ -55,19 +54,5 @@ function Archive({ archive }) {
     </StyledCard>
   );
 }
-
-Note.propTypes = {
-  note: PropTypes.shape({
-    heading: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  }),
-};
-
-Note.defaultProps = {
-  note: PropTypes.shape({
-    heading: '',
-    text: '',
-  }),
-};
 
 export default Archive;

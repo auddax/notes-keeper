@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import {
   Card, CardActions, CardContent, Typography,
@@ -18,7 +17,7 @@ const StyledCard = styled(Card)`
   border-radius: 8px;
 `;
 
-function Note({ note }) {
+function DeleteNote({ note }) {
   const {
     notes, setNotes, setArchiveNotes, setDeletedNotes,
   } = useContext(DataContext);
@@ -56,18 +55,4 @@ function Note({ note }) {
   );
 }
 
-Note.propTypes = {
-  note: PropTypes.shape({
-    heading: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  }),
-};
-
-Note.defaultProps = {
-  note: PropTypes.shape({
-    heading: '',
-    text: '',
-  }),
-};
-
-export default Note;
+export default DeleteNote;
