@@ -27,17 +27,18 @@ function Note({ note }) {
   const [open, setOpen] = useState(false);
   const [newNote, setNewNote] = useState({});
 
-  const handlePopupOpen = () => {
+  const handlePopupOpen = (openedNote) => {
+    setNewNote(openedNote);
     setOpen(true);
   };
 
-  const onTextChange = (event, currentNote) => {
-    let changedNote = { ...currentNote, [event.target.name]: event.target.value };
+  const onTextChange = (event, editedNote) => {
+    let changedNote = { ...editedNote, [event.target.name]: event.target.value };
     setNewNote(changedNote);
   };
 
-  const handlePopupClose = (currrentNote) => {
-    const unchangedNotes = notes.filter((data) => data.id !== currrentNote.id);
+  const handlePopupClose = (editedNote) => {
+    const unchangedNotes = notes.filter((data) => data.id !== editedNote.id);
     setNotes([newNote, ...unchangedNotes]);
     setOpen(false);
   };
@@ -117,7 +118,7 @@ function Note({ note }) {
         </DialogActions>
       </Dialog>
       <StyledCard
-        onClick={handlePopupOpen}
+        onClick={() => handlePopupOpen(note)}
       >
         <CardContent style={{ maxHeight: 400, overflow: 'auto' }}>
           <Typography>{note.heading}</Typography>
