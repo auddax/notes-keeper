@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable react/jsx-boolean-value */
 /* eslint-disable react/prop-types */
 import React, { useContext, useState } from 'react';
@@ -24,12 +25,20 @@ function Note({ note }) {
   } = useContext(DataContext);
 
   const [open, setOpen] = useState(false);
+  const [newNote, setNewNote] = useState({});
 
   const handlePopupOpen = () => {
     setOpen(true);
   };
 
-  const handlePopupClose = () => {
+  const onTextChange = (event, currentNote) => {
+    let changedNote = { ...currentNote, [event.target.name]: event.target.value };
+    setNewNote(changedNote);
+  };
+
+  const handlePopupClose = (currrentNote) => {
+    const unchangedNotes = notes.filter((data) => data.id !== currrentNote.id);
+    setNotes([newNote, ...unchangedNotes]);
     setOpen(false);
   };
 
@@ -49,7 +58,7 @@ function Note({ note }) {
     <Box>
       <Dialog
         open={open}
-        onClose={handlePopupClose}
+        onClose={() => handlePopupClose(note)}
         sx={{
           '& .MuiDialog-container': {
             '& .MuiPaper-root': {
@@ -62,11 +71,15 @@ function Note({ note }) {
       >
         <DialogTitle>
           <TextField
+            placeholder="Enter title"
             margin="dense"
             InputProps={{ disableUnderline: true }}
             defaultValue={note.heading}
             variant="standard"
             fullWidth
+            onChange={(event) => onTextChange(event, newNote)}
+            name="heading"
+            value={newNote.heading}
           />
         </DialogTitle>
         <DialogContent>
@@ -74,10 +87,14 @@ function Note({ note }) {
             autoFocus
             multiline
             margin="dense"
+            placeholder="Enter text"
             InputProps={{ disableUnderline: true }}
             defaultValue={note.text}
             variant="standard"
             fullWidth
+            onChange={(event) => onTextChange(event, newNote)}
+            name="text"
+            value={newNote.text}
           />
         </DialogContent>
         <DialogActions>
@@ -92,7 +109,7 @@ function Note({ note }) {
             onClick={() => deleteNote(note)}
           />
           <Button
-            onClick={handlePopupClose}
+            onClick={() => handlePopupClose(note)}
             style={{ marginLeft: '10px', color: 'inherit', textTransform: 'unset' }}
           >
             Close
