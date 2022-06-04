@@ -121,7 +121,9 @@ function Note({ note }) {
         onClick={() => handlePopupOpen(note)}
       >
         <CardContent style={{ maxHeight: 400, overflow: 'auto' }}>
-          <Typography>{note.heading}</Typography>
+          <Box style={{ fontWeight: 500, marginBottom: 5 }}>
+            {note.heading}
+          </Box>
           <Typography>{note.text}</Typography>
         </CardContent>
         <CardActions>
