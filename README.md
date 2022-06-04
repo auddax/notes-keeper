@@ -2,9 +2,13 @@
 
 Basic, cross-platform note-taking app. Built using React framework and Material UI component library.
 
+## Project page
+
+https://notes.konovalovkirill.ru/
+
 ## Screenshots
 
-![Main page](https://user-images.githubusercontent.com/9900821/172001053-3e21a04a-0386-4378-8975-3f1fda2434a5.png)
+![Initial view](https://user-images.githubusercontent.com/9900821/172001053-3e21a04a-0386-4378-8975-3f1fda2434a5.png)
 
 ## Run Locally
 
